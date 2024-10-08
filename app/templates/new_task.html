@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block title %}Nueva Tarea{% endblock %}
+
+{% block content %}
+<h1>Crear Nueva Tarea</h1>
+<form action="{{ url_for('main.new_task') }}" method="POST">
+    {{ form.hidden_tag() }}  <!-- Token CSRF -->
+    
+    <div>
+        <label for="name">Nombre de la Tarea:</label>
+        {{ form.name(size=32) }}  <!-- Campo para el nombre de la tarea -->
+    </div>
+
+    <div>
+        <input type="submit" value="Crear Tarea">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </div>
+</form>
+{% endblock %}

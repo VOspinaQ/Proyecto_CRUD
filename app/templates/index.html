@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}Task Manager{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>Bienvenido al Administrador de Tareas</h1>
+
+        <ul style="list-style-type: none; padding: 0;">
+            {% for task in tasks %}
+            <li style="margin-bottom: 10px;">
+                {{ task.name }} 
+                <!-- Botón Editar -->
+                <a href="{{ url_for('main.edit_task', task_id=task.id) }}" style="color: #3498db; text-decoration: none; margin-right: 10px;">
+                    Editar
+                </a>
+                <!-- Botón Eliminar -->
+                <form action="{{ url_for('main.delete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                    <input type="submit" value="Delete" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('main.new_task') }}" style="background-color: #2ecc71; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+            Agregar tarea
+        </a>
+    </div>
+{% endblock %}

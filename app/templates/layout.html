@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestor de Tareas{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            color: #555;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #3498db;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Gestor de Tareas</h1>
+            <nav>
+                <a href="{{ url_for('main.index') }}">Inicio</a>
+                <a href="{{ url_for('main.new_task') }}">Nueva Tarea</a>
+            </nav>
+        </header>
+
+        {% block content %}
+        <!-- El contenido de las páginas se insertará aquí -->
+        {% endblock %}
+
+        <footer>
+            <p>&copy; 2024 Gestor de Tareas</p>
+        </footer>
+    </main>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</body>
+</html>
